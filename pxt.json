@@ -8,7 +8,7 @@
     },
     "files": [
         "README.md",
-	"/libs/hello/hello.ts",
+	"./libs/hello/hello.ts",
         "main.blocks",
         "main.ts"
     ],
