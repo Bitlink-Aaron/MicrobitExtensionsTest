@@ -10,7 +10,7 @@ namespace hello {
     //% block
     export function helloWorld() {
         radio.on()
-        radio.send("Hello")
+        radio.sendMessage("Hello")
         radio.off()
         pause(10000)
     }
