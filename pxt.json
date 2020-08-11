@@ -1,6 +1,6 @@
 {
     "name": "microbitextensionstest",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -8,6 +8,7 @@
     },
     "files": [
         "README.md",
+	"/libs/hello/hello.ts",
         "main.blocks",
         "main.ts"
     ],
