@@ -7,10 +7,7 @@
         "radio": "*"
     },
     "files": [
-        "README.md",
-	"./libs/hello/hello.ts",
-        "main.blocks",
-        "main.ts"
+	      "hello.ts"
     ],
     "testFiles": [
         "test.ts"
