@@ -7,7 +7,7 @@
         "radio": "*"
     },
     "files": [
-	      "hello.ts"
+        "hello.ts"
     ],
     "testFiles": [
         "test.ts"
