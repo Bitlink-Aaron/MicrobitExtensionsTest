@@ -9,7 +9,10 @@
 namespace hello {
     //% block
     export function helloWorld() {
-
+        radio.on()
+        radio.send("Hello")
+        radio.off()
+        pause(10000)
     }
 
     // note that Caml casing yields lower case
