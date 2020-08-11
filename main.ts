@@ -7,7 +7,8 @@
 
 //% color="#AA278D" weight=100
 namespace hello {
-    //% block
+    
+    //%block
     export function helloWorld() {
         radio.on()
         radio.sendString("Hello")
