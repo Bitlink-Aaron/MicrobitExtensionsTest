@@ -97,7 +97,8 @@ namespace bitlink {
         //read data if checksum ok
         if (_DHTreadSuccessful) {
                 _DHThumidity = resultArray[0] + resultArray[1] / 100
-                _DHTtemperature = resultArray[2] + resultArray[3] / 10;
+            _DHTtemperature = resultArray[2] + resultArray[3] / 10;
+            basic.showNumber(_DHTtemperature)
         }
         basic.pause(2000)
     } 
