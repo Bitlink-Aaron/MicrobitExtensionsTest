@@ -54,9 +54,7 @@ namespace bitlink {
 
     //% block
     //% group="Components"
-    export function QueryDHT11(pin: DigitalPin) {
-        let startTime: number = 0
-        let endTime: number = 0
+    export function queryDht11(pin: DigitalPin) {
         let checksum: number = 0
         let checksumTmp: number = 0
         let dataArray: boolean[] = []
