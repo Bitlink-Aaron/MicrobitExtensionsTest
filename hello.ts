@@ -22,12 +22,17 @@ namespace bitlink {
                 return
             }
         }
-        if (nameArray[0] == "") {
-            nameArray[0] = receivedName
-            numberOfPings[0] = 1
-        } else {
-            nameArray.push(receivedName)
-            numberOfPings.push(1)
+       
+        nameArray.push(receivedName)
+        numberOfPings.push(1)
+        
+    }
+
+    //% block
+    export function printNamesAndPings(nameArray: string[], numberOfPings: number[]): void {
+        for (let _i = 0; _i < nameArray.length; _i++){
+            basic.showString(nameArray[_i])
+            basic.showNumber(numberOfPings[_i])
         }
     }
 
