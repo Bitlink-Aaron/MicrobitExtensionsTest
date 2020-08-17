@@ -5,7 +5,7 @@
  * generated for an **exported** function.
  */
 
-//% color="#AA278D" weight=100
+//% color="#00AD0F" weight=100
 //% groups=['Project 3.03', 'Data', 'Components']
 namespace bitlink {
 
@@ -103,4 +103,12 @@ namespace bitlink {
         }
         basic.pause(2000)
     } 
+
+    //% block
+    //% group="Components"
+    export function dht11GetTemperature(): number{
+        if (_DHTreadSuccessful)
+            return _DHTtemperature
+        return -90
+    }
 }
