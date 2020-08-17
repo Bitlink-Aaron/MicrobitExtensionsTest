@@ -43,7 +43,7 @@ namespace bitlink {
 
     //% block
     export function emptyStringArray() : string[]{
-        let array: string[]
+        let array: string[] = []
         return array
     }
 }
