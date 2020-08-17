@@ -5,7 +5,7 @@
  * generated for an **exported** function.
  */
 
-//% color="#00AD0F" weight=100
+//% color="#03a5fc" weight=100
 //% groups=['Project 3.03', 'Data', 'Components']
 namespace bitlink {
 
