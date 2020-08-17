@@ -6,15 +6,11 @@
  */
 
 //% color="#AA278D" weight=100
+//% groups=['Project 3.03', 'Data']
 namespace bitlink {
-    
-    //% block
-    export function helloWorld() {
-        radio.sendString("Hello")
-        pause(10000)
-    }
 
     //% block
+    //% group="Project 3.03"
     export function addIdToArrays(receivedName: string, nameArray: string[], numberOfPings: number[]) {
         if (nameArray.length > 0) {
             for (let _i = 0; _i < nameArray.length; _i++) {
@@ -28,12 +24,10 @@ namespace bitlink {
         numberOfPings.push(1)
     }
 
-    //% block
-    export function pushValue(value: string, array: string[]) {
-        array.push(value);
-    } 
+    
 
     //% block
+    //% group="Project 3.03"
     export function printNamesAndPings(nameArray: string[], numberOfPings: number[]){
         for (let _i = 0; _i < nameArray.length; _i++){
             basic.showString(nameArray[_i])
@@ -42,8 +36,15 @@ namespace bitlink {
     }
 
     //% block
+    //% group="Data"
     export function emptyStringArray() : string[]{
         let array: string[] = []
         return array
     }
+
+    //% block
+    //% group="Data"
+    export function pushValue(value: string, array: string[]) {
+        array.push(value);
+    } 
 }
