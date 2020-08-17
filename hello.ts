@@ -16,7 +16,7 @@ namespace bitlink {
 
     //% block
     export function addIdToArrays(receivedName: string, nameArray: string[], numberOfPings: number[]) :void {
-        for (var _i = 0; _i < nameArray.length; _i++){
+        for (let _i = 0; _i < nameArray.length; _i++){
             if (receivedName == nameArray[_i]) {
                 numberOfPings[_i]++;
                 return
