@@ -15,21 +15,26 @@ namespace bitlink {
     }
 
     //% block
-    export function addIdToArrays(receivedName: string, nameArray: string[], numberOfPings: number[]) :void {
-        for (let _i = 0; _i < nameArray.length; _i++){
-            if (receivedName == nameArray[_i]) {
-                numberOfPings[_i]++;
-                return
+    export function addIdToArrays(receivedName: string, nameArray: string[], numberOfPings: number[]) {
+        if (nameArray.length > 0) {
+            for (let _i = 0; _i < nameArray.length; _i++) {
+                if (receivedName == nameArray[_i]) {
+                    numberOfPings[_i]++;
+                    return
+                }
             }
         }
-       
         nameArray.push(receivedName)
         numberOfPings.push(1)
-        
     }
 
     //% block
-    export function printNamesAndPings(nameArray: string[], numberOfPings: number[]): void {
+    export function pushValue(value: string, array: string[]) {
+        array.push(value);
+    } 
+
+    //% block
+    export function printNamesAndPings(nameArray: string[], numberOfPings: number[]){
         for (let _i = 0; _i < nameArray.length; _i++){
             basic.showString(nameArray[_i])
             basic.showNumber(numberOfPings[_i])
@@ -40,13 +45,5 @@ namespace bitlink {
     export function emptyStringArray() : string[]{
         var array: string[]
         return array
-    }
-
-    // note that Caml casing yields lower case
-    // block text with spaces
-
-    //% block
-    export function camlCaseTwo() {
-
     }
 }
