@@ -22,8 +22,19 @@ namespace bitlink {
                 return
             }
         }
-        nameArray.push(receivedName)
-        numberOfPings.push(1)
+        if (nameArray[0] == "") {
+            nameArray[0] = receivedName
+            numberOfPings[0] = 1
+        } else {
+            nameArray.push(receivedName)
+            numberOfPings.push(1)
+        }
+    }
+
+    //% block
+    export function emptyStringArray() : string[]{
+        var array: string[]
+        return array
     }
 
     // note that Caml casing yields lower case
