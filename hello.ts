@@ -12,16 +12,21 @@ namespace bitlink {
     //% block
     //% group="Project 3.03"
     export function addIdToArrays(receivedName: string, nameArray: string[], numberOfPings: number[]) {
-        if (nameArray.length > 0) {
-            for (let _i = 0; _i < nameArray.length; _i++) {
-                if (receivedName == nameArray[_i]) {
-                    numberOfPings[_i]++;
-                    return
-                }
-            }
+        let index =  nameArray.indexOf(receivedName)
+        if (index >= 0)
+            numberOfPings[index]++;
+        else{
+            nameArray.push(receivedName)
+            numberOfPings.push(1)
         }
-        nameArray.push(receivedName)
-        numberOfPings.push(1)
+    }
+
+    //% block
+    //% group="Project 3.03"
+    export function addSerialNumberToArray(receivedNumber: number, numberArray: number[]) {
+        if (numberArray.indexOf(receivedNumber) == -1){
+            numberArray.push(receivedNumber)
+        }
     }
 
     
@@ -41,12 +46,6 @@ namespace bitlink {
         let array: string[] = []
         return array
     }
-
-    //% block
-    //% group="Data"
-    export function pushValue(value: string, array: string[]) {
-        array.push(value);
-    } 
 
     let _DHTtemperature: number = 0.0
     let _DHThumidity: number = 0.0
