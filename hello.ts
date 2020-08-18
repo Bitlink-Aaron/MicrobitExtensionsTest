@@ -50,7 +50,9 @@ namespace bitlink {
     let _DHTtemperature: number = 0.0
     let _DHThumidity: number = 0.0
     let _DHTreadSuccessful: boolean = false
-
+    
+    //Copyright (c) 2019 Alan Wang
+    //https://github.com/alankrantas/pxt-DHT11_DHT22
     //% block
     //% group="Components"
     export function queryDht11(pin: DigitalPin) {
