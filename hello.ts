@@ -105,7 +105,7 @@ namespace bitlink {
 
         //read data if checksum ok
         if (_DHTreadSuccessful) {
-                _DHThumidity = resultArray[0] + resultArray[1] / 100
+            _DHThumidity = resultArray[0] + resultArray[1] / 100
             _DHTtemperature = resultArray[2] + resultArray[3] / 10;
             basic.showNumber(_DHTtemperature)
         }
@@ -114,9 +114,17 @@ namespace bitlink {
 
     //% block
     //% group="Components"
-    export function dht11GetTemperature(): number{
+    export function dht11Temperature(): number{
         if (_DHTreadSuccessful)
             return _DHTtemperature
+        return -90
+    }
+    
+    //% block
+    //% group="Components"
+    export function dht11Humidity(): number{
+        if (_DHTreadSuccessful)
+            return _DHThumidity
         return -90
     }
 }
