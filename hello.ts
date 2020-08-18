@@ -41,6 +41,14 @@ namespace bitlink {
     }
 
     //% block
+    //% group="Project 3.03"
+    export function printNames(nameArray: string[]){
+        for (let _i = 0; _i < nameArray.length; _i++){
+            basic.showString(nameArray[_i])
+        }
+    }
+
+    //% block
     //% group="Data"
     export function emptyStringArray() : string[]{
         let array: string[] = []
