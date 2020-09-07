@@ -5,19 +5,12 @@
  * generated for an **exported** function.
  */
 
-enum IDType {
-    //% block="Serial Number"
-    Serial,
-    //% block="Name"
-    Name
-}
-
 //% color="#03a5fc" weight=100
 //% groups=['Project 3.03', 'Data', 'Components']
 namespace bitlink {
 
-    //% block
     //% group="Project 3.03"
+    //% block
     export function addIdToArrays(receivedName: string, nameArray: string[], numberOfPings: number[]) {
         let index =  nameArray.indexOf(receivedName)
         if (index >= 0)
@@ -28,25 +21,15 @@ namespace bitlink {
         }
     }
 
-    //% block="add $receivedID|to a $type array|$numberArray $nameArray|$numberOfPings"
     //% group="Project 3.03"
-    export function addIdToArraysTwo(type : IDType, receivedID: string, nameArray: string[], numberArray: number[], numberOfPings: number[]) {
-        if (type == IDType.Serial) {
-            let index = numberArray.indexOf(receivedID)
-            if (index >= 0)
-                numberOfPings[index]++;
-            else {
-                nameArray.push(receivedID)
-                numberOfPings.push(1)
-            }
-        } else if (type == IDType.Name) {
-            let index =  nameArray.indexOf(receivedID)
-            if (index >= 0)
-                numberOfPings[index]++;
-            else{
-                nameArray.push(receivedID)
-                numberOfPings.push(1)
-            }
+    //% block="add $receivedNum|to array $numArray|counting contacts with $numPings"
+    export function addSerialNumberToArrays(receivedNum: number, numArray: number[], numPings: number[]) {
+        let index =  numArray.indexOf(receivedNum)
+        if (index >= 0)
+            numPings[index]++;
+        else{
+            numArray.push(receivedNum)
+            numPings.push(1)
         }
     }
 
@@ -65,6 +48,15 @@ namespace bitlink {
     export function printNamesAndPings(nameArray: string[], numberOfPings: number[]){
         for (let _i = 0; _i < nameArray.length; _i++){
             basic.showString(nameArray[_i])
+            basic.showNumber(numberOfPings[_i])
+        }
+    }
+
+    //% block
+    //% group="Project 3.03"
+    export function printSerialAndPings(serialArray: number[], numberOfPings: number[]){
+        for (let _i = 0; _i < serialArray.length; _i++){
+            basic.showNumber(serialArray[_i])
             basic.showNumber(numberOfPings[_i])
         }
     }
@@ -136,7 +128,6 @@ namespace bitlink {
         if (_DHTreadSuccessful) {
             _DHThumidity = resultArray[0] + resultArray[1] / 100
             _DHTtemperature = resultArray[2] + resultArray[3] / 10;
-            basic.showNumber(_DHTtemperature)
         }
         basic.pause(2000)
     } 
