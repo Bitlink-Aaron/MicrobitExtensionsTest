@@ -5,6 +5,13 @@
  * generated for an **exported** function.
  */
 
+enum IDType {
+    //% block="Serial Number"
+    Serial,
+    //% block="Name"
+    Name
+}
+
 //% color="#03a5fc" weight=100
 //% groups=['Project 3.03', 'Data', 'Components']
 namespace bitlink {
@@ -18,6 +25,28 @@ namespace bitlink {
         else{
             nameArray.push(receivedName)
             numberOfPings.push(1)
+        }
+    }
+
+    //% block="add $receivedID|to a $type array|$numberArray $nameArray|$numberOfPings"
+    //% group="Project 3.03"
+    export function addIdToArraysTwo(type : IDType, receivedID: string, nameArray: string[], numberArray: number[], numberOfPings: number[]) {
+        if (type == IDType.Serial) {
+            let index = numberArray.indexOf(receivedID)
+            if (index >= 0)
+                numberOfPings[index]++;
+            else {
+                nameArray.push(receivedID)
+                numberOfPings.push(1)
+            }
+        } else if (type == IDType.Name) {
+            let index =  nameArray.indexOf(receivedID)
+            if (index >= 0)
+                numberOfPings[index]++;
+            else{
+                nameArray.push(receivedID)
+                numberOfPings.push(1)
+            }
         }
     }
 
