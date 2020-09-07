@@ -1,3 +1,4 @@
+
 /**
  * Functions are mapped to blocks using various macros
  * in comments starting with %. The most important macro
@@ -9,9 +10,10 @@
 //% groups=['Project 3.03', 'Data', 'Components']
 namespace bitlink {
 
+    //% weight=45
     //% group="Project 3.03"
-    //% block
-    export function addIdToArrays(receivedName: string, nameArray: string[], numberOfPings: number[]) {
+    //% block="add name $receivedName|to $nameArray|counting contacts with $numberOfPings"
+    export function addIdToArrays(receivedName: string, nameArray: string[], numberOfPings: number[]): void {
         let index =  nameArray.indexOf(receivedName)
         if (index >= 0)
             numberOfPings[index]++;
@@ -21,9 +23,21 @@ namespace bitlink {
         }
     }
 
+    //% weight=45
     //% group="Project 3.03"
-    //% block="add $receivedNum|to array $numArray|counting contacts with $numPings"
-    export function addSerialNumberToArrays(receivedNum: number, numArray: number[], numPings: number[]) {
+    //% block="add name $receivedName to $nameArray"
+    export function addIdToArray(receivedName: string, nameArray: string[]) {
+        if (nameArray == null)
+            return;
+        if (nameArray.indexOf(receivedName) == -1){
+            nameArray.push(receivedName)
+        }
+        return;
+    }
+
+    //% group="Project 3.03"
+    //% block="add ID $receivedNum to array $numArray counting contacts with $numPings"
+    export function addSerialNumberToArrays(receivedNum: number, numArray: number[], numPings: number[]) : void {
         let index =  numArray.indexOf(receivedNum)
         if (index >= 0)
             numPings[index]++;
@@ -31,14 +45,17 @@ namespace bitlink {
             numArray.push(receivedNum)
             numPings.push(1)
         }
+
+        return;
     }
 
-    //% block
     //% group="Project 3.03"
-    export function addSerialNumberToArray(receivedNumber: number, numberArray: number[]) {
+    //% block="add ID $receivedNumber to array $numberArray"
+    export function addSerialNumberToArray(receivedNumber: number, numberArray: number[]) : void {
         if (numberArray.indexOf(receivedNumber) == -1){
             numberArray.push(receivedNumber)
         }
+        return;
     }
 
     
