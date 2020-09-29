@@ -7,7 +7,7 @@
  */
 
 //% color="#6392ff" weight=99
-//% groups=['Project 3.03 Input', 'Project 3.03 Output']
+//% groups=['Project 3.03 Input', 'Project 3.03 Output', 'Project 3.02 Output']
 namespace bitkitProjects{
     //% weight=52
     //% group="Project 3.03 Input" blockExternalInputs=true
@@ -104,6 +104,46 @@ namespace bitkitProjects{
             basic.showString(nameArray[_i])
         }
     }
+
+    //% block="scroll plant type of %mode"
+    //% group="Project 3.02 Output" 
+    //% weight=48
+    export function printPlantNames(mode: number){
+        if (mode == 0) {
+            basic.showString("Seedling")
+        } else if (mode == 1) {
+            basic.showString("Small Plant")
+        } else if (mode == 2) {
+            basic.showString("Adult Plant")
+        } else if (mode == 3) {
+            basic.showString("Succulent")
+        }
+    }
+
+    //% block="scroll soil type of %mode"
+    //% group="Project 3.02 Output" 
+    //% weight=48
+    export function printSoilTypes(mode: number){
+        if (mode == 0) {
+            basic.showString("Sandy")
+        } else if (mode == 1) {
+            basic.showString("Loamy")
+        } else if (mode == 2) {
+            basic.showString("Clay")
+        } else if (mode == 3) {
+            basic.showString("Peaty")
+        }
+    }
+
+    //% block="toggle Servo"
+    //% group="Project 3.02 Output" 
+    //% weight=48
+    export function toggleServo(){
+        pins.servoWritePin(AnalogPin.P1, 0)
+        basic.pause(2000)
+        pins.servoWritePin(AnalogPin.P1, 90)
+        basic.pause(2000)
+    }
 }
 
 //% color="#03a5fc" weight=100
@@ -117,6 +157,12 @@ namespace bitlink {
     export function emptyStringArray() : string[]{
         let array: string[] = []
         return array
+    }
+
+    //% block="melody %melody"
+    //% group="Data"
+    export function melodyAsString(melody : string) : string {
+        return melody
     }
 
     let _DHTtemperature: number = 0.0
