@@ -146,7 +146,7 @@ namespace bitkitProjects{
     }
 }
 
-//% color="#03a5fc" weight=100 icon="\f6b2"
+//% color="#03a5fc" weight=100 icon="\uf7bf"
 //% groups=['Project 3.03 Input', 'Project 3.03 Output', 'Data', 'DHT11']
 namespace bitlink {
 
