@@ -6,7 +6,7 @@
  * generated for an **exported** function.
  */
 
-//% color="#6392ff" weight=99
+//% color="#6392ff" weight=99 icon="\f8f6"
 //% groups=['Project 3.03 Input', 'Project 3.03 Output', 'Project 3.02 Output']
 namespace bitkitProjects{
     //% weight=52
@@ -146,7 +146,7 @@ namespace bitkitProjects{
     }
 }
 
-//% color="#03a5fc" weight=100
+//% color="#03a5fc" weight=100 icon="\f6b2"
 //% groups=['Project 3.03 Input', 'Project 3.03 Output', 'Data', 'DHT11']
 namespace bitlink {
 
