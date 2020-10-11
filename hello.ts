@@ -6,7 +6,7 @@
  * generated for an **exported** function.
  */
 
-//% color="#6392ff" weight=99 icon="\f8f6"
+//% color="#6392ff" weight=99 icon="\uf135"
 //% groups=['Project 3.03 Input', 'Project 3.03 Output', 'Project 3.02 Output']
 namespace bitkitProjects{
     //% weight=52
