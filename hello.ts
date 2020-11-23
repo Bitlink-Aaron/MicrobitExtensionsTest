@@ -1,13 +1,5 @@
-
-/**
- * Functions are mapped to blocks using various macros
- * in comments starting with %. The most important macro
- * is "block", and it specifies that a block should be
- * generated for an **exported** function.
- */
-
 //% color="#6392ff" weight=99 icon="\uf135"
-//% groups=['Project 3.03 Input', 'Project 3.03 Output', 'Project 3.02 Output']
+//% groups=['Project 4.04 Output', 'Project 3.03 Input', 'Project 3.03 Output', 'Project 3.02 Output']
 namespace bitkitProjects{
     //% weight=52
     //% group="Project 3.03 Input" blockExternalInputs=true
@@ -144,9 +136,50 @@ namespace bitkitProjects{
         pins.servoWritePin(AnalogPin.P1, 90)
         basic.pause(2000)
     }
+
+
+    //% weight=52
+    //% group="Project 4.04 Output" blockExternalInputs=false
+    //% block="handle 4-way intersection|looping every %loopLength ms|switching active street with %delay delay|"
+    export function trafficTimer( loopLength: number, delay: number = 500): number[] {
+        
+        
+
+        let time = input.runningTime() % loopLength
+
+        let fhalf = loopLength / 2
+        let fgreen = fhalf - delay * 3
+        let forange = fhalf - delay
+        let sgreen = loopLength - delay * 3
+        let sorange = loopLength - delay
+        let greenTime = loopLength / 3 // 1 3rd of loop length
+        let orangeTime = greenTime / 2 // 1 6th of loop length
+        let redTime = loopLength - greenTime - orangeTime // 1 half of loop length
+        let mainDir: number = 0
+        let subDir: number = 2
+
+        if (time < fgreen){
+            mainDir = 0
+        } else if (time < forange){
+            mainDir = 1
+        } else if (time < fhalf){
+            mainDir = 2
+        } else{
+            mainDir = 2
+            if (time < sgreen)
+            {
+                subDir = 0
+            }
+            else if (time < sorange){
+                subDir = 1
+            } else
+                subDir = 2
+        }
+        return [mainDir, subDir] 
+    }
 }
 
-//% color="#03a5fc" weight=100 icon="\uf4fb"
+//% color="#03a5fc" weight=100 icon="\uf26c"
 //% groups=['Project 3.03 Input', 'Project 3.03 Output', 'Data', 'DHT11']
 namespace bitlink {
 
@@ -227,6 +260,13 @@ namespace bitlink {
         if (_DHTreadSuccessful)
             return _DHTtemperature
         return -90
+    }
+
+    //% block="last read successful?"
+    //% group="DHT11"
+    export function dht11Successful(): boolean{
+        return _DHTreadSuccessful
+            
     }
     
     //% block="current humidity"

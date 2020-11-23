@@ -1,20 +1,20 @@
 {
-  "name": "microbitextensionstest",
-  "version": "0.0.1",
-  "description": "",
-  "dependencies": {
-    "core": "*",
-    "radio": "*"
-  },
-  "files": [
-    "hello.ts"
-  ],
-  "testFiles": [
-    "test.ts"
-  ],
-  "public": true,
-  "supportedTargets": [
-    "microbit"
-  ],
-  "preferredEditor": "tsprj"
+    "name": "microbitextensionstest",
+    "version": "0.0.1",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*"
+    },
+    "files": [
+        "hello.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true,
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "tsprj"
 }
