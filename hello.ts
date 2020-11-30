@@ -140,21 +140,16 @@ namespace bitkitProjects{
 
     //% weight=52
     //% group="Project 4.04 Output" blockExternalInputs=false
-    //% block="handle 4-way intersection|looping every %loopLength ms|switching active street with %delay delay|"
-    export function trafficTimer( loopLength: number, delay: number = 500): number[] {
+    //% block="cross intersection over time(ms) %loopLength with offset(ms) %offset"
+    export function trafficTimer( loopLength: number = 10000, offset: number = 0): number[] {
         
-        
-
         let time = input.runningTime() % loopLength
-
+        let delay = 1000
         let fhalf = loopLength / 2
         let fgreen = fhalf - delay * 3
         let forange = fhalf - delay
         let sgreen = loopLength - delay * 3
         let sorange = loopLength - delay
-        let greenTime = loopLength / 3 // 1 3rd of loop length
-        let orangeTime = greenTime / 2 // 1 6th of loop length
-        let redTime = loopLength - greenTime - orangeTime // 1 half of loop length
         let mainDir: number = 0
         let subDir: number = 2
 
