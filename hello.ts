@@ -28,6 +28,23 @@ namespace bitkitProjects{
         return;
     }
 
+    //% weight=60
+    //% group="Project 3.03 Output" blockExternalInputs=true
+    //% block="check $name is in array $nameArray counted with $counterArray"
+    export function queryNameInArray(name: string, nameArray: string[], counterArray: number[]) : void {
+        if (nameArray == null)
+            return;
+        
+        let index : number = nameArray.indexOf(name)
+
+        if (index == -1){
+            basic.showString("Name not found!")
+        } else {
+            basic.showString(nameArray[index] + ", " + counterArray[index].toString())
+        }
+        return;
+    }
+
     //%weight=55
     //% group="Project 3.03 Input" blockExternalInputs=true
     //% block="add ID $receivedNum to array $numArray counting contacts with $numPings"
