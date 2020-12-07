@@ -30,9 +30,9 @@ namespace bitkitProjects{
 
     //% weight=60
     //% group="Project 3.03 Output" blockExternalInputs=true
-    //% block="check $name is in array $nameArray counted with $counterArray"
+    //% block="report $name found in array $nameArray counted with $counterArray"
     export function queryNameInArray(name: string, nameArray: string[], counterArray: number[]) : void {
-        if (nameArray == null)
+        if (nameArray == null || counterArray == null)
             return;
         
         let index : number = nameArray.indexOf(name)
