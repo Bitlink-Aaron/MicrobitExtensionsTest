@@ -1,6 +1,6 @@
 //% color="#6392ff" weight=99 icon="\uf135"
 //% groups=['Project 4.04 Output', 'Project 3.03 Input', 'Project 3.03 Output', 'Project 3.02 Output']
-namespace bitkitProjects{
+namespace BitkitProjects{
     //% weight=52
     //% group="Project 3.03 Input" blockExternalInputs=true
     //% block="add name %receivedName to %nameArray counting contacts with %numberOfPings"
@@ -114,7 +114,7 @@ namespace bitkitProjects{
         }
     }
 
-    //% weight=52
+    /*//% weight=52
     //% group="Project 4.04 Output" blockExternalInputs=false
     //% block="cross intersection over time(ms) %loopLength with offset(ms) %offset"
     export function trafficTimer( loopLength: number = 10000, offset: number = 0): number[] {
@@ -147,12 +147,12 @@ namespace bitkitProjects{
                 subDir = 2
         }
         return [mainDir, subDir] 
-    }
+    }*/
 }
 
 //% color="#03a5fc" weight=100 icon="\uf26c"
-//% groups=['Project 3.03 Input', 'Project 3.03 Output', 'Data', 'DHT11']
-namespace bitlink {
+//% groups=['Data', 'DHT11']
+namespace Bitlink {
 
     
 
@@ -178,51 +178,52 @@ namespace bitlink {
     //% block="Query DHT11 on pin %pin"
     //% group="DHT11"
     export function queryDht11(pin: DigitalPin) {
-        let checksum: number = 0
-        let checksumTmp: number = 0
-        let dataArray: boolean[] = []
-        let resultArray: number[] = []
-        for (let index = 0; index < 40; index++)
-            dataArray.push(false)
-        for (let index = 0; index < 5; index++)
-            resultArray.push(0)
-
-        pins.digitalWritePin(pin, 0) //begin protocol
-        basic.pause(18)
-        pins.setPull(pin, PinPullMode.PullUp) //pull up data pin if needed
-        pins.digitalReadPin(pin)
-        control.waitMicros(20)
-        while (pins.digitalReadPin(pin) == 1);
-        while (pins.digitalReadPin(pin) == 0); //sensor response
-        while (pins.digitalReadPin(pin) == 1); //sensor response
-
-        //read data (5 bytes)
-        for (let index = 0; index < 40; index++) {
+        if (input.runningTime() > 2000){
+            let checksum: number = 0
+            let checksumTmp: number = 0
+            let dataArray: boolean[] = []
+            let resultArray: number[] = []
+            for (let index = 0; index < 40; index++)
+                dataArray.push(false)
+            for (let index = 0; index < 5; index++)
+                resultArray.push(0)
+            pins.digitalWritePin(pin, 0) //begin protocol
+            basic.pause(18)
+            pins.setPull(pin, PinPullMode.PullUp) //pull up data pin if needed
+            pins.digitalReadPin(pin)
+            control.waitMicros(20)
             while (pins.digitalReadPin(pin) == 1);
-            while (pins.digitalReadPin(pin) == 0);
-            control.waitMicros(28)
-            //if sensor pull up data pin for more than 28 us it means 1, otherwise 0
-            if (pins.digitalReadPin(pin) == 1) dataArray[index] = true
+            while (pins.digitalReadPin(pin) == 0); //sensor response
+            while (pins.digitalReadPin(pin) == 1); //sensor response
+
+            //read data (5 bytes)
+            for (let index = 0; index < 40; index++) {
+                while (pins.digitalReadPin(pin) == 1);
+                while (pins.digitalReadPin(pin) == 0);
+                control.waitMicros(28)
+                //if sensor pull up data pin for more than 28 us it means 1, otherwise 0
+                if (pins.digitalReadPin(pin) == 1) dataArray[index] = true
+            }
+
+            //convert byte number array to integer
+            for (let index = 0; index < 5; index++)
+                for (let index2 = 0; index2 < 8; index2++)
+                    if (dataArray[8 * index + index2]) resultArray[index] += 2 ** (7 - index2)
+
+            //verify checksum
+            checksumTmp = resultArray[0] + resultArray[1] + resultArray[2] + resultArray[3]
+            checksum = resultArray[4]
+            if (checksumTmp >= 512) checksumTmp -= 512
+            if (checksumTmp >= 256) checksumTmp -= 256
+            if (checksum == checksumTmp) _DHTreadSuccessful = true
+
+            //read data if checksum ok
+            if (_DHTreadSuccessful) {
+                _DHThumidity = resultArray[0] + resultArray[1] / 100
+                _DHTtemperature = resultArray[2] + resultArray[3] / 10;
+            }
+            basic.pause(2000)
         }
-
-        //convert byte number array to integer
-        for (let index = 0; index < 5; index++)
-            for (let index2 = 0; index2 < 8; index2++)
-                if (dataArray[8 * index + index2]) resultArray[index] += 2 ** (7 - index2)
-
-        //verify checksum
-        checksumTmp = resultArray[0] + resultArray[1] + resultArray[2] + resultArray[3]
-        checksum = resultArray[4]
-        if (checksumTmp >= 512) checksumTmp -= 512
-        if (checksumTmp >= 256) checksumTmp -= 256
-        if (checksum == checksumTmp) _DHTreadSuccessful = true
-
-        //read data if checksum ok
-        if (_DHTreadSuccessful) {
-            _DHThumidity = resultArray[0] + resultArray[1] / 100
-            _DHTtemperature = resultArray[2] + resultArray[3] / 10;
-        }
-        basic.pause(2000)
     } 
 
     //% block="current temperature"
