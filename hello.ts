@@ -1,161 +1,6 @@
-//% color="#6392ff" weight=99 icon="\uf135"
-//% groups=['Project 4.04 Output', 'Project 3.03 Input', 'Project 3.03 Output', 'Project 3.02 Output']
-namespace BitkitProjects{
-    //% weight=52
-    //% group="Project 3.03 Input" blockExternalInputs=true
-    //% block="add name %receivedName to %nameArray counting contacts with %numberOfPings"
-    export function addIdToArrays(receivedName: string, nameArray: string[], numberOfPings: number[]): void {
-        if (nameArray == null || numberOfPings == null)
-            return;
-        let index =  nameArray.indexOf(receivedName)
-        if (index >= 0)
-            numberOfPings[index]++;
-        else{
-            nameArray.push(receivedName)
-            numberOfPings.push(1)
-        }
-    }
-
-    //% weight=60
-    //% group="Project 3.03 Input" blockExternalInputs=true
-    //% block="add name $receivedName to array $nameArray"
-    export function addIdToArray(receivedName: string, nameArray: string[]) : void {
-        if (nameArray == null)
-            return;
-        if (nameArray.indexOf(receivedName) == -1){
-            nameArray.push(receivedName)
-        }
-        return;
-    }
-
-    //% weight=60
-    //% group="Project 3.03 Output" blockExternalInputs=true
-    //% block="report $name found in array $nameArray counted with $counterArray"
-    export function queryNameInArray(name: string, nameArray: string[], counterArray: number[]) : void {
-        if (nameArray == null || counterArray == null)
-            return;
-        
-        let index : number = nameArray.indexOf(name)
-
-        if (index == -1){
-            basic.showString("Name not found!")
-        } else {
-            basic.showString(nameArray[index] + ", " + counterArray[index].toString())
-        }
-        return;
-    }
-
-    //%weight=55
-    //% group="Project 3.03 Input" blockExternalInputs=true
-    //% block="add ID $receivedNum to array $numArray counting contacts with $numPings"
-    export function addSerialNumberToArrays(receivedNum: number, numArray: number[], numPings: number[]) : void {
-        if (numArray == null || numPings == null)
-            return;
-        
-        let index =  numArray.indexOf(receivedNum)
-        if (index >= 0)
-            numPings[index]++;
-        else{
-            numArray.push(receivedNum)
-            numPings.push(1)
-        }
-
-        return;
-    }
-
-    //% weight=65
-    //% group="Project 3.03 Input" blockExternalInputs=true
-    //% block="add ID $receivedNumber to array $numberArray"
-    export function addSerialNumberToArray(receivedNumber: number, numberArray: number[]) : void {
-        if (numberArray == null)
-            return;
-        if (numberArray.indexOf(receivedNumber) == -1){
-            numberArray.push(receivedNumber)
-        }
-        return;
-    }
-
-    
-
-    //% block="scroll names from %nameArray with contacts from %numberOfPings"
-    //% group="Project 3.03 Output" blockExternalInputs=true 
-    //% weight=45
-    export function printNamesAndPings(nameArray: string[], numberOfPings: number[]){
-        if (nameArray == null || numberOfPings == null)
-            return;
-        
-        for (let _i = 0; _i < nameArray.length; _i++){
-            basic.showString(nameArray[_i])
-            basic.showNumber(numberOfPings[_i])
-        }
-    }
-
-    //% block="scroll IDs from %serialArray with contacts from %numberOfPings"
-    //% group="Project 3.03 Output" blockExternalInputs=true 
-    //% weight=46
-    export function printSerialAndPings(serialArray: number[], numberOfPings: number[]){
-        if (serialArray == null || numberOfPings == null)
-            return;
-
-        for (let _i = 0; _i < serialArray.length; _i++){
-            basic.showNumber(serialArray[_i])
-            basic.showNumber(numberOfPings[_i])
-        }
-    }
-
-    //% block="scroll names from %nameArray"
-    //% group="Project 3.03 Output" 
-    //% weight=48
-    export function printNames(nameArray: string[]){
-        if (nameArray == null)
-            return;
-        for (let _i = 0; _i < nameArray.length; _i++){
-            basic.showString(nameArray[_i])
-        }
-    }
-
-    /*//% weight=52
-    //% group="Project 4.04 Output" blockExternalInputs=false
-    //% block="cross intersection over time(ms) %loopLength with offset(ms) %offset"
-    export function trafficTimer( loopLength: number = 10000, offset: number = 0): number[] {
-        
-        let time = input.runningTime() % loopLength
-        let delay = 1000
-        let fhalf = loopLength / 2
-        let fgreen = fhalf - delay * 3
-        let forange = fhalf - delay
-        let sgreen = loopLength - delay * 3
-        let sorange = loopLength - delay
-        let mainDir: number = 0
-        let subDir: number = 2
-
-        if (time < fgreen){
-            mainDir = 0
-        } else if (time < forange){
-            mainDir = 1
-        } else if (time < fhalf){
-            mainDir = 2
-        } else{
-            mainDir = 2
-            if (time < sgreen)
-            {
-                subDir = 0
-            }
-            else if (time < sorange){
-                subDir = 1
-            } else
-                subDir = 2
-        }
-        return [mainDir, subDir] 
-    }*/
-}
-
 //% color="#03a5fc" weight=100 icon="\uf26c"
-//% groups=['Data', 'DHT11']
+//% groups=['Data', 'DHT11', 'Project 3.03 Input', 'Project 3.03 Output']
 namespace Bitlink {
-
-    
-
     //% block
     //% group="Data"
     export function emptyStringArray() : string[]{
@@ -247,5 +92,118 @@ namespace Bitlink {
         if (_DHTreadSuccessful)
             return _DHThumidity
         return -90
+    }
+
+    //% weight=28
+    //% group="Project 3.03 Input" blockExternalInputs=true
+    //% block="add name %receivedName to %nameArray counting contacts with %numberOfPings"
+    export function addIdToArrays(receivedName: string, nameArray: string[], numberOfPings: number[]): void {
+        if (nameArray == null || numberOfPings == null)
+            return;
+        let index =  nameArray.indexOf(receivedName)
+        if (index >= 0)
+            numberOfPings[index]++;
+        else{
+            nameArray.push(receivedName)
+            numberOfPings.push(1)
+        }
+    }
+
+    //% weight=30
+    //% group="Project 3.03 Input" blockExternalInputs=true
+    //% block="add name $receivedName to array $nameArray"
+    export function addIdToArray(receivedName: string, nameArray: string[]) : void {
+        if (nameArray == null)
+            return;
+        if (nameArray.indexOf(receivedName) == -1){
+            nameArray.push(receivedName)
+        }
+        return;
+    }
+
+    //% weight=26
+    //% group="Project 3.03 Output" blockExternalInputs=true
+    //% block="report $name found in array $nameArray counted with $counterArray"
+    export function queryNameInArray(name: string, nameArray: string[], counterArray: number[]) : void {
+        if (nameArray == null || counterArray == null)
+            return;
+        
+        let index : number = nameArray.indexOf(name)
+
+        if (index == -1){
+            basic.showString("Name not found!")
+        } else {
+            basic.showString(nameArray[index] + ", " + counterArray[index].toString())
+        }
+        return;
+    }
+
+    //%weight=27
+    //% group="Project 3.03 Input" blockExternalInputs=true
+    //% block="add ID $receivedNum to array $numArray counting contacts with $numPings"
+    export function addSerialNumberToArrays(receivedNum: number, numArray: number[], numPings: number[]) : void {
+        if (numArray == null || numPings == null)
+            return;
+        
+        let index =  numArray.indexOf(receivedNum)
+        if (index >= 0)
+            numPings[index]++;
+        else{
+            numArray.push(receivedNum)
+            numPings.push(1)
+        }
+
+        return;
+    }
+
+    //% weight=33
+    //% group="Project 3.03 Input" blockExternalInputs=true
+    //% block="add ID $receivedNumber to array $numberArray"
+    export function addSerialNumberToArray(receivedNumber: number, numberArray: number[]) : void {
+        if (numberArray == null)
+            return;
+        if (numberArray.indexOf(receivedNumber) == -1){
+            numberArray.push(receivedNumber)
+        }
+        return;
+    }
+
+    
+
+    //% block="scroll names from %nameArray with contacts from %numberOfPings"
+    //% group="Project 3.03 Output" blockExternalInputs=true 
+    //% weight=26
+    export function printNamesAndPings(nameArray: string[], numberOfPings: number[]){
+        if (nameArray == null || numberOfPings == null)
+            return;
+        
+        for (let _i = 0; _i < nameArray.length; _i++){
+            basic.showString(nameArray[_i])
+            basic.showNumber(numberOfPings[_i])
+        }
+    }
+
+    //% block="scroll IDs from %serialArray with contacts from %numberOfPings"
+    //% group="Project 3.03 Output" blockExternalInputs=true 
+    //% weight=25
+    export function printSerialAndPings(serialArray: number[], numberOfPings: number[]){
+        if (serialArray == null || numberOfPings == null)
+            return;
+
+        for (let _i = 0; _i < serialArray.length; _i++){
+            basic.showNumber(serialArray[_i])
+            basic.showNumber(numberOfPings[_i])
+        }
+    }
+
+    //% block="scroll names from %nameArray"
+    //% group="Project 3.03 Output" 
+    //% weight=24
+    export function printNames(nameArray: string[]){
+        if (nameArray == null)
+            return;
+        for (let _i = 0; _i < nameArray.length; _i++){
+            basic.showString(nameArray[_i])
+        }
     }
 }
