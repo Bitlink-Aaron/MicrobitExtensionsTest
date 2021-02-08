@@ -1,19 +1,6 @@
-//% color="#03a5fc" weight=100 icon="\uf26c"
+//% color="#03a5fc" weight=100 icon="\uf135"
 //% groups=['Data', 'DHT11', 'Project 3.03 Input', 'Project 3.03 Output']
 namespace Bitlink {
-    //% block
-    //% group="Data"
-    export function emptyStringArray() : string[]{
-        let array: string[] = []
-        return array
-    }
-
-    //% block="melody %melody"
-    //% group="Data"
-    export function melodyAsString(melody : string) : string {
-        return melody
-    }
-
     let _DHTtemperature: number = 0.0
     let _DHThumidity: number = 0.0
     let _DHTreadSuccessful: boolean = false
@@ -117,23 +104,6 @@ namespace Bitlink {
             return;
         if (nameArray.indexOf(receivedName) == -1){
             nameArray.push(receivedName)
-        }
-        return;
-    }
-
-    //% weight=26
-    //% group="Project 3.03 Output" blockExternalInputs=true
-    //% block="report $name found in array $nameArray counted with $counterArray"
-    export function queryNameInArray(name: string, nameArray: string[], counterArray: number[]) : void {
-        if (nameArray == null || counterArray == null)
-            return;
-        
-        let index : number = nameArray.indexOf(name)
-
-        if (index == -1){
-            basic.showString("Name not found!")
-        } else {
-            basic.showString(nameArray[index] + ", " + counterArray[index].toString())
         }
         return;
     }
